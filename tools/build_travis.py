@@ -63,6 +63,7 @@ build_list = [
         { "target": "NUCLEO_L031K6",     "toolchains": "GCC_ARM", "libs": ["dsp"] },
         { "target": "NUCLEO_L073RZ",     "toolchains": "GCC_ARM", "libs": ["dsp"] },
         { "target": "NUCLEO_F429ZI",     "toolchains": "GCC_ARM", "libs": ["dsp", "usb"] },
+		{ "target": "CUSTOM_F427VI",     "toolchains": "GCC_ARM", "libs": ["dsp", "usb"] },		
         { "target": "NUCLEO_F446RE",     "toolchains": "GCC_ARM", "libs": ["dsp", "usb"] },
         { "target": "NUCLEO_F446ZE",     "toolchains": "GCC_ARM", "libs": ["dsp", "usb"] },
         { "target": "NUCLEO_F746ZG",     "toolchains": "GCC_ARM", "libs": ["dsp", "usb"] },
@@ -250,6 +251,12 @@ linking_list = [
                      }
             },
             {"target": "NUCLEO_F429ZI",
+             "toolchains": "GCC_ARM",
+             "tests": {""     : ["MBED_2", "MBED_10", "MBED_11", "MBED_16"],
+                       "usb"  : ["USB_1", "USB_2" ,"USB_3"],
+                       }
+             },
+			 {"target": "CUSTOM_F427VI",
              "toolchains": "GCC_ARM",
              "tests": {""     : ["MBED_2", "MBED_10", "MBED_11", "MBED_16"],
                        "usb"  : ["USB_1", "USB_2" ,"USB_3"],

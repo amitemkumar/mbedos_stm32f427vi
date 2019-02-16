@@ -38,7 +38,7 @@
 #define UART_NUM (4)
 #elif defined (TARGET_STM32F407xG) || defined (TARGET_STM32F446xE)
 #define UART_NUM (6)
-#elif defined (TARGET_STM32F429xI) || defined (TARGET_STM32F439xI) || defined (TARGET_STM32F437xG) || defined (TARGET_STM32F469xI)
+#elif defined (TARGET_STM32F429xI) ||defined (TARGET_STM32F429xI) || defined (TARGET_STM32F439xI) || defined (TARGET_STM32F437xG) || defined (TARGET_STM32F469xI)
 #define UART_NUM (8)
 #else
 #define UART_NUM (10) // max value // TARGET_STM32F413xH

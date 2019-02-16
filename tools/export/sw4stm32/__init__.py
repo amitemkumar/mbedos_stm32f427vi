@@ -203,6 +203,11 @@ class Sw4STM32(GNUARMEclipse):
             'name': 'NUCLEO-F413ZH',
             'mcuId': 'STM32F413ZHTx'
         },
+		'CUSTOM_F427VI':
+        {
+            'name': 'CUSTOM_F427VI',
+            'mcuId': 'STM32F427VITx'
+        },
         'NUCLEO_F429ZI':
         {
             'name': 'NUCLEO-F429ZI',

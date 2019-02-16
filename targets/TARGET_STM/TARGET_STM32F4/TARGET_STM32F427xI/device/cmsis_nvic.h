@@ -27,62 +27,15 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *******************************************************************************
  */
-#include "mbed_assert.h"
-#include "mbed_error.h"
-#include "spi_api.h"
 
-#if DEVICE_SPI
-#include <stdbool.h>
-#include <math.h>
-#include <string.h>
-#include "cmsis.h"
-#include "pinmap.h"
-#include "PeripheralPins.h"
+#ifndef MBED_CMSIS_NVIC_H
+#define MBED_CMSIS_NVIC_H
 
-#if DEVICE_SPI_ASYNCH
-#define SPI_S(obj)    (( struct spi_s *)(&(obj->spi)))
-#else
-#define SPI_S(obj)    (( struct spi_s *)(obj))
-#endif
-
-/*
- * Only the frequency is managed in the family specific part
- * the rest of SPI management is common to all STM32 families
- */
-int spi_get_clock_freq(spi_t *obj)
-{
-    struct spi_s *spiobj = SPI_S(obj);
-    int spi_hz = 0;
-
-    /* Get source clock depending on SPI instance */
-    switch ((int)spiobj->spi) {
-        case SPI_1:
-
-
-#if defined SPI4_BASE 
-        case SPI_4:
-#endif
-#if defined (SPI5_BASE)
-        case SPI_5:
-#endif
-#if defined(SPI6_BASE)
-        case SPI_6:
-#endif
-            /* SPI_1, SPI_4, SPI_5 and SPI_6. Source CLK is PCKL2 */
-            spi_hz = HAL_RCC_GetPCLK2Freq();
-            break;
-        case SPI_2:
-#if defined SPI3_BASE
-        case SPI_3:
-#endif
-            /* SPI_2 and SPI_3. Source CLK is PCKL1 */
-            spi_hz = HAL_RCC_GetPCLK1Freq();
-            break;
-        default:
-            error("CLK: SPI instance not set");
-            break;
-    }
-    return spi_hz;
-}
+// STM32F427VI
+// CORE: 16 vectors = 64 bytes from 0x00 to 0x3F
+// MCU Peripherals: 91 vectors = 364 bytes from 0x40 to 0x1AB
+// Total: 107 vectors = 428 bytes (0x1AC) to be reserved in RAM
+#define NVIC_NUM_VECTORS        107
+#define NVIC_RAM_VECTOR_ADDRESS 0x20000000    // Vectors positioned at start of RAM
 
 #endif

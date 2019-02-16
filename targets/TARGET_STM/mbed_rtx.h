@@ -100,6 +100,7 @@
 #define INITIAL_SP              (0x20020000UL)
 
 #elif (defined(TARGET_STM32F429ZI) ||\
+       defined(TARGET_STM32F427VI) ||\
        defined(TARGET_STM32F437VG) ||\
        defined(TARGET_STM32F439VI) ||\
        defined(TARGET_STM32F439ZI))
